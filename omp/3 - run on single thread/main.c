@@ -7,9 +7,13 @@ int main(){
 
     omp_set_num_threads(NUM_THREDS);
     #pragma omp parallel
-        printf("Meow From Thread Num : %d\n", omp_get_thread_num());
-    #pragma omp single
-        printf("This runs only once and on Thread Num : %d\n", omp_get_thread_num());
+    {
+        printf("Meow ");
+        #pragma omp single
+        {
+            printf("\nThis runs only once ...\n");
+        }
+    }
 
     return 0;
 }
